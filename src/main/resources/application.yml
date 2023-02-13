@@ -1,0 +1,40 @@
+server:
+  port: ${SERVER_PORT:8010}
+
+keycloak:
+  enabled: false
+  configurationFile: ${KEYCLOAK_JSON_PATH:file:src/main/resources/keycloak.json}
+
+spring:
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://postgres_blog:5432/keycloak
+#    username: dev
+#    password: admin
+    url: jdbc:postgresql://postgres:5432/app
+    username: dev
+    password: admin
+#    url: jdbc:postgresql://localhost:5410/postgres
+#    username: postgres
+#    password: postgres
+  # JPA properties  "http://keycloak_blog:8080/",
+  jpa:
+    hibernate:
+      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+# Logger configuration
+#logging:
+#  pattern:
+#    console: "%d %-5level %logger : %msg%n"
+#  level:
+#    org.springframework: info
+#    org.hibernate: debug
+url:
+  cb:
+    currency:
+      json: https://www.cbr-xml-daily.ru/daily_json.js
